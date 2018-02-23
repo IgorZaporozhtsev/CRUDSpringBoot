@@ -2,72 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <title>CRUDSpringBoot</title>
-
 </head>
 
 <body>
-
-
-<style>
-    #centerTable{
-        position: absolute; /* Абсолютное позиционирование */
-        width: 400px; /* Ширина слоя в пикселах */
-        height: 170px; /* Высота слоя в пикселах */
-        left: 50%; /* Положение слоя от левого края */
-        top: 60%; /* Положение слоя от верхнего края */
-        margin-left: -150px; /* Отступ слева */
-        margin-top: -100px;	/* Отступ сверху */
-        background: #DBE199; /* Цвет фона */
-        border: solid 1px black; /* Параметры рамки вокруг */
-        padding: 10px; /* Поля вокруг текста */
-        overflow: auto; /* Добавление полосы прокрутки */
-    }
-</style>
-
-
-</div>
-
-<div id="centerTable">
-
-    <table border="1">
-
-
+<center>
+    <table border="1" >
         <tr>
             <th>id</th>
             <th>name</th>
             <th>login</th>
             <th>password</th>
-            <th>role</th>
         </tr>
+            <tr th:each="user : ${getAllUser}">
 
-
-            <tr th:object="${user}" >
-
-                <td><span th:text="${users.id}"></span></td>
-                <td><span th:text="${users.name}"></span></td>
-                <td><span th:text="${users.login}"></span></td>
-                <td><span th:text="${users.password}"></span></td>
-
-                <td><a href="<c:url value='/admin/update/${users.id}'/>">Update</a></td>
-
-                <%--<td><a href="/delete/${users.id}">Delete </a></td>--%>
-
-                <td><a href="<c:url value='/admin/delete/${users.id}'/>">Delete</a></td>
-
-                <%--<td><a href="${pageContext.request.contextPath}/delete?id=${users.id}">Delete </a></td>--%>
-
-
+                <td><span th:text="${user.id}"></span></td>
+                <td><span th:text="${user.name}"></span></td>
+                <td><span th:text="${user.login}"></span></td>
+                <td><span th:text="${user.password}"></span></td>
             </tr>
-
-
     </table>
-<br>
-    <a href="/admin/add">Add User</a>
-</div>
-
-
-
-
-</div>
+</center>
 </body>
 </html>

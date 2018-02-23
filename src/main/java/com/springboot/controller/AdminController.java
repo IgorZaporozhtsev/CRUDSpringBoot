@@ -17,7 +17,7 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping//(value = "/user", method = RequestMethod.GET)
+    @RequestMapping
     public String getAllUser(Model model){
         model.addAttribute("getAllUser", this.userService.getAllUser());
         return "getAlluser";

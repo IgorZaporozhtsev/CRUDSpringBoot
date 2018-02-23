@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -13,24 +15,26 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
+/*    @Autowired
     private HibernateTemplate hibernateTemplate; //Spring Hibernate template
 
     @Autowired
-    private SessionFactory sessionFactory; //Spring Hibernate template
+    private SessionFactory sessionFactory; //Spring Hibernate template*/
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
 
     @SuppressWarnings("unchecked")
     @Override
     public List<User> getAllUser() {
-        hibernateTemplate.setCheckWriteOperations(false);
         String hql = "FROM User";
-        return (List<User>) hibernateTemplate.find(hql);
+        return (List<User>) entityManager.createQuery(hql).getResultList();
     }
 
     @Override
     public void addUser(User user){
-        hibernateTemplate.setCheckWriteOperations(false);
-        hibernateTemplate.save(user);
+        entityManager.persist(user);
     }
 
     @Override
@@ -39,23 +43,23 @@ public class UserDaoImpl implements UserDao {
         u.setName(user.getName());
         u.setPassword(user.getPassword());
         u.setLogin(user.getLogin());
-        hibernateTemplate.update(u);
+        entityManager.flush();
     }
 
     @Override
     public User getUserById(int id){
-        return hibernateTemplate.get(User.class, id);
+        return entityManager.find(User.class, id);
     }
 
     @Override
     public User getUserByLogin(String login){
-        return (User) sessionFactory.getCurrentSession().createQuery("FROM User u WHERE u.login = :login")
-                .setParameter("login", login).uniqueResult();
+        return (User) entityManager.createQuery("FROM User u WHERE u.login = :login")
+                .setParameter("login", login).getSingleResult();
     }
 
     @Override
     public void deleteUser(int id){
-        hibernateTemplate.delete(getUserById(id));
+        entityManager.remove(getUserById(id));
     }
 
 
