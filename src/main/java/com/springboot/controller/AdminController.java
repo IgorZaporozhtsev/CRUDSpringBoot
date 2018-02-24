@@ -32,13 +32,13 @@ public class AdminController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("user") User user){
         userService.addUser(user);
-        return "redirect:/user";
+        return "redirect:/admin";
     }
 
     @RequestMapping(value = "/delete/{id}")
     public String deteteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
-        return "redirect:/user";
+        return "redirect:/admin";
     }
 
     @RequestMapping("/update/{id}")
@@ -51,9 +51,8 @@ public class AdminController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUser(@ModelAttribute("user") User user){
         userService.updateUser(user);
-        return "redirect:/user";
+        return "redirect:/admin";
     }
-
 
 
 }

@@ -3,9 +3,23 @@
 <head>
     <title>CRUDSpringBoot</title>
 </head>
-
+<style>
+    #centerForm {
+        position: absolute; /* Абсолютное позиционирование */
+        width: 350px; /* Ширина слоя в пикселах */
+        height: 170px; /* Высота слоя в пикселах */
+        left: 50%; /* Положение слоя от левого края */
+        top: 30%; /* Положение слоя от верхнего края */
+        margin-left: -150px; /* Отступ слева */
+        margin-top: -100px;	/* Отступ сверху */
+        background: #C4E4ED; /* Цвет фона */
+        border: solid 1px black; /* Параметры рамки вокруг */
+        padding: 10px; /* Поля вокруг текста */
+        overflow: auto; /* Добавление полосы прокрутки */
+    }
+</style>
 <body>
-<center>
+<div id="centerForm">
     <table border="1" >
         <tr>
             <th>id</th>
@@ -14,13 +28,14 @@
             <th>password</th>
         </tr>
             <tr th:each="user : ${getAllUser}">
-
                 <td><span th:text="${user.id}"></span></td>
                 <td><span th:text="${user.name}"></span></td>
                 <td><span th:text="${user.login}"></span></td>
                 <td><span th:text="${user.password}"></span></td>
+                <td><a th:href="@{/admin/update/{id}/(id=${user.id})}">Update</a></td>
+                <td><a th:href="@{/admin/delete/{id}/(id=${user.id})}">Delete</a></td>
             </tr>
     </table>
-</center>
+</div>
 </body>
 </html>
