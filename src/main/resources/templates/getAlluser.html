@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
+    <meta charset="UTF-8">
     <title>CRUDSpringBoot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</meta>
+</meta>
 </head>
-<style>
-    #centerForm {
-        position: absolute; /* Абсолютное позиционирование */
-        width: 350px; /* Ширина слоя в пикселах */
-        height: 170px; /* Высота слоя в пикселах */
-        left: 50%; /* Положение слоя от левого края */
-        top: 30%; /* Положение слоя от верхнего края */
-        margin-left: -150px; /* Отступ слева */
-        margin-top: -100px;	/* Отступ сверху */
-        background: #C4E4ED; /* Цвет фона */
-        border: solid 1px black; /* Параметры рамки вокруг */
-        padding: 10px; /* Поля вокруг текста */
-        overflow: auto; /* Добавление полосы прокрутки */
-    }
-</style>
+
 <body>
-<div id="centerForm">
-    <table border="1" >
+
+<nav class="navbar navbar-default" style="background: #262626">
+    <div class="container-fluid" >
+        <div class="navbar-header" >
+            <a href="#" class="navbar-brand">SpringBoot</a>
+        </div>
+    <!--    <div>
+            <ul class="nav navbar-nav">
+
+                <li class="active">
+                    <a href="#">Главная</a>
+                </li>
+
+                <li>
+                    <a href="#">О нас</a>
+                </li>
+
+                <li>
+                    <a href="#">Обратная связь</a>
+                </li>
+
+            </ul>
+        </div>-->
+    </div>
+</nav>
+
+<!--
+
+    <div class="container-fluid">
+        <h1>3 различных блока</h1>
+        <div class="row">
+            <div class="col-md-4" style="background-color: #ff9999">Left</div>
+            <div class="col-md-4" style="background-color: #99ccff">Middle</div>
+            <div class="col-md-4" style="background-color: #00CC99">Right</div>
+        </div>
+    </div>
+-->
+
+
+
+
+<div class="container">
+    <table class="table table-striped" >
         <tr>
             <th>id</th>
             <th>name</th>
@@ -32,10 +73,17 @@
                 <td><span th:text="${user.name}"></span></td>
                 <td><span th:text="${user.login}"></span></td>
                 <td><span th:text="${user.password}"></span></td>
-                <td><a th:href="@{/admin/update/{id}/(id=${user.id})}">Update</a></td>
-                <td><a th:href="@{/admin/delete/{id}/(id=${user.id})}">Delete</a></td>
+
+                <td>
+                    <a th:href="@{/admin/update/{id}/(id=${user.id})}" class="btn btn-primary" role="button">Update</a>
+                </td>
+
+                <td>
+                    <a th:href="@{/admin/delete/{id}/(id=${user.id})}" class="btn btn-primary" role="button">Delete</a>
+                </td>
             </tr>
     </table>
+
 </div>
 </body>
 </html>
