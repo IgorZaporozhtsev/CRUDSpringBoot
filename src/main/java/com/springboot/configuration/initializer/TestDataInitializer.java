@@ -28,6 +28,7 @@ public class TestDataInitializer {
         roleUser.setName("USER");
         roleService.addRole(roleUser);
 
+        //-----Admin_1-------
         User admin = new User();
         admin.setLogin("admin");
         admin.setPassword("admin");
@@ -38,7 +39,7 @@ public class TestDataInitializer {
         admin.setRoles(adminRoles);
 
         userService.addUser(admin);
-
+        //-----User_1-------
         User user = new User();
         user.setLogin("user");
         user.setPassword("user");
@@ -48,6 +49,28 @@ public class TestDataInitializer {
         user.setRoles(userRoles);
 
         userService.addUser(user);
+
+        //-----User_2-------
+        User user2 = new User();
+        user2.setLogin("user2");
+        user2.setPassword("user2");
+        user2.setName("Mark");
+        Set<Role> userRoles2 = new HashSet<>();
+        userRoles2.add(roleUser);
+        user2.setRoles(userRoles2);
+
+        userService.addUser(user2);
+
+        //-----User_3-------
+        User user3 = new User();
+        user3.setLogin("user3");
+        user3.setPassword("user3");
+        user3.setName("John");
+        Set<Role> userRoles3 = new HashSet<>();
+        userRoles3.add(roleUser);
+        user3.setRoles(userRoles3);
+
+        userService.addUser(user3);
 
     }
 }
