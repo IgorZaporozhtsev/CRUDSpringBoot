@@ -20,6 +20,7 @@ public class AdminController {
     @RequestMapping
     public String getAllUser(Model model){
         model.addAttribute("getAllUser", this.userService.getAllUser());
+        model.addAttribute("user", new User());
         return "getAlluser";
     }
 
