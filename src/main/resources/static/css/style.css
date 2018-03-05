@@ -1,0 +1,11 @@
+.top-buffer {
+    margin-top:150px;
+}
+
+@media (min-width:768px){
+    .navbar-static-top{border-radius:0}
+}
+.navbar-fixed-top,
+.navbar-fixed-bottom{
+    position:fixed;right:0;left:0;z-index:1030
+}
