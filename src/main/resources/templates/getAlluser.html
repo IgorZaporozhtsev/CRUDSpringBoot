@@ -21,14 +21,15 @@
     <script src="http://yastatic.net/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
     </meta>
+
 </meta>
 
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
 
     <style>
         .topMain{
             margin-top: -20px;
         }
-
            /* Sidebar navigation */
         .nav-sidebar {
             margin-right: -21px; /* 20px padding + 1px border */
@@ -108,93 +109,114 @@
 
                 <!-- Table panels -->
                 <div class="tab-content ">
-                             <div class="tab-pane active" id="home">
+                      <div class="tab-pane active" id="home">
 
-                                    <!--Panel _1-->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">All Users</div>
+                            <!--Panel _1-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">All Users</div>
 
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>id</th>
-                                                    <th>name</th>
-                                                    <th>login</th>
-                                                    <th>password</th>
-                                                    <th>update</th>
-                                                    <th>delete</th>
-                                                </tr>
-                                                <tr th:each="user : ${getAllUser}">
-                                                    <td><span th:text="${user.id}"></span></td>
-                                                    <td><span th:text="${user.name}"></span></td>
-                                                    <td><span th:text="${user.login}"></span></td>
-                                                    <td><span th:text="${user.password}"></span></td>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>id</th>
+                                            <th>name</th>
+                                            <th>login</th>
+                                            <th>password</th>
+                                            <th>update</th>
+                                            <th>delete</th>
+                                        </tr>
+                                        <tr th:each="user : ${getAllUser}">
+                                            <td><span th:text="${user.id}"></span></td>
+                                            <td><span th:text="${user.name}"></span></td>
+                                            <td><span th:text="${user.login}"></span></td>
+                                            <td><span th:text="${user.password}"></span></td>
 
-                                                    <td>
-                                                        <a th:href="@{/admin/update/{id}/(id=${user.id})}" class="btn btn-primary btn-md" role="button">Update</a>
+                                            <td>
+                                                <a th:href="@{/admin/update/{id}/(id=${user.id})}" class="btn btn-primary btn-md" role="button">Edit</a>
 
-                                                        <!-- Кнопка, вызывающее модальное окно -->
-                                                        <a href="#myModal"  class="btn btn-primary" data-toggle="modal">Update</a>
+                                                <!-- Кнопка, вызывающее модальное окно -->
+                                                <a th:attr="data-target=@{#__${user.id}__}" class="btn btn-primary" data-toggle="modal" >Update</a>
 
-                                                        <!-- HTML-код модального окна -->
-                                                        <div id="myModal" class="modal fade">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
+                                                <!-- HTML-код модального окна -->
+                                                <div th:id="${user.id}" class="modal fade">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
 
-                                                                    <!-- Заголовок модального окна -->
-                                                                    <div class="modal-header">
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                        <h4 class="modal-title">Edit user</h4>
+                                                            <!-- Заголовок модального окна -->
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title">Edit user</h4>
+                                                            </div>
+
+                                                            <!-- Основное содержимое модального окна -->
+                                                            <div class="modal-body">
+
+                                                                <form role="form" class="form-group" method="post" th:action="@{/admin/update}">
+
+
+                                                                    <div class="form-group">
+                                                                        <input class="form-control" th:type="hidden" name="id"  placeholder="id" th:value="${user.id}" />
                                                                     </div>
 
-                                                                    <!-- Основное содержимое модального окна -->
-                                                                    <div class="modal-body">
-
-                                                                       <div th:replace="updateUser :: update"></div>
-
+                                                                    <div class="form-group">
+                                                                        <label for="name"> Name </label>
+                                                                        <input class="form-control"  type="text" id="name" placeholder="name" th:value="${user.name}"/>
                                                                     </div>
 
-                                                                    <!-- Футер модального окна -->
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-
+                                                                    <div class="form-group">
+                                                                        <label for="login"> Login </label>
+                                                                        <input  class="form-control" type="text" id="login" placeholder="login" th:value="${user.login}"/>
                                                                     </div>
-                                                                </div>
+
+                                                                    <div class="form-group ">
+                                                                        <label for="password"> Password </label>
+                                                                        <input class="form-control" id="password" type="text" placeholder="password" th:value="${user.password}"/>
+                                                                    </div>
+
+                                                                    <button type="submit" class="btn btn-success">Edit user</button>
+                                                                </form>
+
+                                                            </div>
+                                                            <!-- Футер модального окна -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                                                                    <button type="button" class="btn btn-primary">Edit</button>
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
 
 
 
-                                                    </td>
+                                            </td>
 
-                                                    <td>
-                                                        <a th:href="@{/admin/delete/{id}/(id=${user.id})}" class="btn btn-primary btn-md" role="button">Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            <td>
+                                                <a th:href="@{/admin/delete/{id}/(id=${user.id})}" class="btn btn-primary btn-md" role="button">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </table>
 
-                                        </div>
-                                    </div>
-                             </div>
+                                </div>
+                            </div>
+                     </div>
 
 
-                            <!--Panel_2-->
+                    <!--Panel_2-->
 
-                             <div class="tab-pane" id="profile">
+                     <div class="tab-pane" id="profile">
 
-                                 <div class="panel panel-default">
+                         <div class="panel panel-default">
 
-                                     <div class="panel-heading">Add new user</div>
+                             <div class="panel-heading">Add new user</div>
 
-                                      <div class="panel body">
+                              <div class="panel body">
 
-                                          <div th:replace="adduser :: content" class="addForm"></div>
+                                  <div th:replace="adduser :: content" class="addForm"></div>
 
-                                      </div>
+                              </div>
 
-                                 </div>
-                             </div>
+                         </div>
+                     </div>
 
 
                 </div>
