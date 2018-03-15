@@ -1,7 +1,13 @@
-.top-buffer {
+
+
+
+.topLoginForm{
     margin-top:150px;
 }
 
+.top-buffer {
+    margin-top:150px;
+}
 
 .topMain{
     margin-top: -20px;
@@ -29,4 +35,16 @@
 .addForm{
     margin: 0 auto;
     width: 300px;
+    text-align: center;
+}
+
+.modal-content{
+    width: 500px;
+    margin-left: 100px;
+}
+
+.modal-body{
+    width: 200px;
+    margin: auto;
+    text-align: center;
 }

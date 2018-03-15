@@ -24,41 +24,9 @@
 
 </meta>
 
-    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/static/css/style.css}"/>
 
-    <style>
-        .topMain{
-            margin-top: -20px;
-        }
-           /* Sidebar navigation */
-        .nav-sidebar {
-            margin-right: -21px; /* 20px padding + 1px border */
-            margin-bottom: 20px;
-            margin-left: -20px;
-        }
-        .nav-sidebar > li > a {
-            padding-right: 20px;
-            padding-left: 20px;
-        }
-        .nav-sidebar > .active > a {
-            color: #fff;
-            background-color: #428bca;
-
-        }
-        .navbar-static-top{
-            border-radius:0
-        }
-
-        .addForm{
-            margin: 0 auto;
-            width: 300px;
-        }
-
-    </style>
-
-
-
-</head>
+    </head>
 
 <body>
 
@@ -132,8 +100,8 @@
                                             <td><span th:text="${user.password}"></span></td>
 
                                             <td>
-                                                <a th:href="@{/admin/update/{id}/(id=${user.id})}" class="btn btn-primary btn-md" role="button">Edit</a>
-
+                                           <!--     <a th:href="@{/admin/update/{id}/(id=${user.id})}" class="btn btn-primary btn-md" role="button">Edit</a>
+-->
                                                 <!-- Кнопка, вызывающее модальное окно -->
                                                 <a th:attr="data-target=@{#__${user.id}__}" class="btn btn-primary" data-toggle="modal" >Update</a>
 
@@ -155,22 +123,23 @@
 
 
                                                                     <div class="form-group">
-                                                                        <input class="form-control" th:type="hidden" name="id"  placeholder="id" th:value="${user.id}" />
+                                                                        <label for="name"> Id </label>
+                                                                        <input class="form-control" th:readonly="condition" id="id" name="id"  placeholder="id" th:value="${user.id}" />
                                                                     </div>
 
                                                                     <div class="form-group">
                                                                         <label for="name"> Name </label>
-                                                                        <input class="form-control"  type="text" id="name" placeholder="name" th:value="${user.name}"/>
+                                                                        <input class="form-control"  type="text" id="name" name="name" placeholder="name" th:value="${user.name}"/>
                                                                     </div>
 
                                                                     <div class="form-group">
                                                                         <label for="login"> Login </label>
-                                                                        <input  class="form-control" type="text" id="login" placeholder="login" th:value="${user.login}"/>
+                                                                        <input  class="form-control" type="text" id="login" name="login" placeholder="login" th:value="${user.login}"/>
                                                                     </div>
 
                                                                     <div class="form-group ">
                                                                         <label for="password"> Password </label>
-                                                                        <input class="form-control" id="password" type="text" placeholder="password" th:value="${user.password}"/>
+                                                                        <input class="form-control" id="password" type="text" name="password" placeholder="password" th:value="${user.password}"/>
                                                                     </div>
 
                                                                     <button type="submit" class="btn btn-success">Edit user</button>
