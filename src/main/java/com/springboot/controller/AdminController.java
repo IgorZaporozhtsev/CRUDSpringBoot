@@ -5,7 +5,10 @@ import com.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -23,7 +26,6 @@ public class AdminController {
     }
 
 
-
   /*  @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getAddPageUser(Model model){
     model.addAttribute("user", new User());
@@ -31,11 +33,13 @@ public class AdminController {
 
     }*/
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add")
     public String addUser(@ModelAttribute("AddUser") User user){
         userService.addUser(user);
         return "redirect:/admin";
     }
+
+
 
     @RequestMapping(value = "/delete/{id}")
     public String deteteUser(@PathVariable("id") int id){
@@ -59,15 +63,15 @@ public class AdminController {
     }*/
 
 
-    @RequestMapping("/update/{id}")
+    /*@RequestMapping("/update/{id}")
     public String updatePageUser(@PathVariable("id") int id, Model model){
         model.addAttribute("UpdateUser", userService.getUserById(id));
         // model.addAttribute("addAllUser", userService.getAllUser());
         return "updateUser";
-    }
+    }*/
 
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update")
     public String updateUser(
             @RequestParam("id") int id,
             @RequestParam("name") String name,
