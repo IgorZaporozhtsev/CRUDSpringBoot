@@ -19,7 +19,8 @@ public class AdminRestController {
         model.addAttribute("getAllUser", userService.getAllUser());
         model.addAttribute("AddUser", new User());
         model.addAttribute("UpdateUser", new User());
-        return new ResponseEntity<>(new User(22,"ee", "ee", "ee"),  HttpStatus.OK);
+        //return new ResponseEntity<>(new User(22,"ee", "ee", "ee"),  HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUser().listIterator(),  HttpStatus.OK); //return ??
     }
 
    /* @PostMapping(value = "/admin")
