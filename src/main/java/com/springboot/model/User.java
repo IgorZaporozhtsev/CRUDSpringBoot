@@ -1,5 +1,7 @@
 package com.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
@@ -29,6 +31,8 @@ public class User implements UserDetails {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
 
+    @JsonManagedReference
+    //@JsonBackReference
     private Set<Role> roles;
 
     @Column(name = "enabled", nullable = false)
@@ -54,14 +58,11 @@ public class User implements UserDetails {
     }
 
 
-
-
     public User(int id){
         this.id = id;
     }
 
     public User(){
-
     }
 
     public void setId(int id) {

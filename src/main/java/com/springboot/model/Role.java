@@ -1,5 +1,6 @@
 package com.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -26,6 +27,10 @@ public class Role implements GrantedAuthority {
     @JoinTable(name = "permissions",
             joinColumns = {@JoinColumn(name = "role_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
+
+
+    //@JsonManagedReference
+    @JsonBackReference
     private List<User> users;
 
 
