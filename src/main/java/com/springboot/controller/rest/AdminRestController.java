@@ -27,37 +27,21 @@ public class AdminRestController {
 
 
     @PostMapping(value = "/admin")
-    public ResponseEntity<Void> addUser(@ModelAttribute("AddUser") User user){
+    public ResponseEntity addUser(@ModelAttribute("AddUser") User user){
         userService.addUser(user);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/admin/{id}")
-    public ResponseEntity<Void> deteteUser(@PathVariable("id") int id){
+    public ResponseEntity deteteUser(@PathVariable("id") int id){
         userService.deleteUser(id);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
-
-    @PutMapping("/admin/{id}")
-    public ResponseEntity<Void> updateUser(@PathVariable("id") int id){
-        userService.updateUser(userService.getUserById(id));
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
-
-
-
-/*
-    @PutMapping(value = "/admin{id}")
-    public ResponseEntity<Void> updateUser(
-            @RequestParam("id") int id,
-            @RequestParam("name") String name,
-            @RequestParam("login") String login,
-            @RequestParam("password") String password){
-
-        User user = new User(id, name, login, password);
+    @PutMapping("/admin")
+    public ResponseEntity updateUser(User user){
         userService.updateUser(user);
+        return new ResponseEntity (HttpStatus.OK);
+    }
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }*/
 }

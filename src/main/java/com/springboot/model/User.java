@@ -27,12 +27,8 @@ public class User implements UserDetails {
 
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
-    @JoinTable(name = "permissions",
-            joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id")})
-
+    @JoinTable(name = "permissions", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     @JsonManagedReference
-    //@JsonBackReference
     private Set<Role> roles;
 
     @Column(name = "enabled", nullable = false)

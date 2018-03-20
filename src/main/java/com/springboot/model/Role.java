@@ -24,12 +24,7 @@ public class Role implements GrantedAuthority {
     }
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = User.class)
-    @JoinTable(name = "permissions",
-            joinColumns = {@JoinColumn(name = "role_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")})
-
-
-    //@JsonManagedReference
+    @JoinTable(name = "permissions", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})
     @JsonBackReference
     private List<User> users;
 
