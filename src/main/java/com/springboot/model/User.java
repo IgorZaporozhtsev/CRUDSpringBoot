@@ -1,13 +1,11 @@
 package com.springboot.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
-
 
 @Entity                     //@Entity(name = "table_user") если не указываем имя таблицы в HQL используется имя класса
 @Table(name = "users")
@@ -28,7 +26,8 @@ public class User implements UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class)
     @JoinTable(name = "permissions", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    @JsonManagedReference
+
+    @JsonBackReference
     private Set<Role> roles;
 
     @Column(name = "enabled", nullable = false)
