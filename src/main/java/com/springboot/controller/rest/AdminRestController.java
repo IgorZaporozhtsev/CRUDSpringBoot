@@ -33,7 +33,7 @@ public class AdminRestController {
     }
 
     @PostMapping(value = "/admin")
-    public ResponseEntity addUser(@ModelAttribute("AddUser") User user){
+    public ResponseEntity addUser(User user){
         userService.addUser(user);
         return new ResponseEntity(HttpStatus.OK);
     }

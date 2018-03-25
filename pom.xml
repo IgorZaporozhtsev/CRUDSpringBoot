@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>SpringBootGrabDuck</groupId>
-    <artifactId>grabduck</artifactId>
+    <groupId>SpringBootServer</groupId>
+    <artifactId>SpringBootServer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
@@ -61,11 +61,11 @@
 
         <!-- подключение Security -->
 
-        <dependency>
+  <!--      <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>

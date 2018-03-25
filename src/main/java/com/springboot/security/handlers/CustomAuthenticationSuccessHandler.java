@@ -1,3 +1,4 @@
+/*
 package com.springboot.security.handlers;
 
 import org.springframework.security.core.Authentication;
@@ -29,3 +30,4 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         }
     }
 }
+*/

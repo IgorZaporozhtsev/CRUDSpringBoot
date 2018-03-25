@@ -1,3 +1,4 @@
+/*
 package com.springboot.security.configuration;
 
 import com.springboot.security.handlers.CustomAuthenticationSuccessHandler;
@@ -45,3 +46,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password");
         }
 }
+*/

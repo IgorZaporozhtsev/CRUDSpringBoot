@@ -1,15 +1,15 @@
 package com.springboot.model;
 
 import com.fasterxml.jackson.annotation.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
 @Entity                     //@Entity(name = "table_user") если не указываем имя таблицы в HQL используется имя класса
 @Table(name = "users")
-public class User implements UserDetails {
+public class User /*implements UserDetails*/ {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -86,6 +86,10 @@ public class User implements UserDetails {
         return login;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
@@ -93,6 +97,7 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 
     public Boolean getEnabled() {
         return enabled;
@@ -102,14 +107,12 @@ public class User implements UserDetails {
         this.enabled = enabled;
     }
 
-    @Override
+  /*  @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
 
-    public String getPassword() {
-        return password;
-    }
+
 
     @Override
     public String getUsername() {
@@ -135,8 +138,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-
+*/
 
     @Override
     public String toString() {

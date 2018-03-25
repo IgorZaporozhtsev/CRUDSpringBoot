@@ -1,14 +1,14 @@
 package com.springboot.model;
 
 import com.fasterxml.jackson.annotation.*;
-import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "roles")
-public class Role implements GrantedAuthority {
+public class Role /*implements GrantedAuthority*/ {
 
     @Id
     @GeneratedValue
@@ -18,10 +18,10 @@ public class Role implements GrantedAuthority {
     @Column(name = "name", length = 20, nullable = false)
     private String name;
 
-    @Override
+    /*@Override
     public String getAuthority() {
         return name;
-    }
+    }*/
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = User.class)
     @JoinTable(name = "permissions", joinColumns = {@JoinColumn(name = "role_id")}, inverseJoinColumns = {@JoinColumn(name = "user_id")})

@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     public void updateUser (User user) {
         User u = getUserById(user.getId());
         u.setName(user.getName());
-        u.setPassword(user.getPassword());
+     //   u.setPassword(user.getPassword());
         u.setLogin(user.getLogin());
         entityManager.flush();
     }
