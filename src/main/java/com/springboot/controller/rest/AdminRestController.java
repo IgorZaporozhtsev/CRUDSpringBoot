@@ -33,7 +33,7 @@ public class AdminRestController {
     }
 
     @PostMapping(value = "/admin")
-    public ResponseEntity addUser(User user){
+    public ResponseEntity addUser(@RequestBody User user){
         userService.addUser(user);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -44,10 +44,10 @@ public class AdminRestController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping(value = "/admin/update")
-    public ResponseEntity updateUser(@RequestBody User user ){
+    @PutMapping(value = "/admin")
+    public ResponseEntity updateUser(@RequestBody User user){
         userService.updateUser(user);
-        return new ResponseEntity (HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }

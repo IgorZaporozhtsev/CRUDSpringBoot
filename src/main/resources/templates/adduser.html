@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+
+    <title>CRUDSpringBoot</title>
+
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!--TODO почему не работает без этих скриптов-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="http://yastatic.net/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<style>
+
+
+    .addForm{
+        margin: 0 auto;
+        width: 300px;
+    }
+
+</style>
+
+</head>
+<body>
+
+
+<div th:fragment="content" class="addForm">
+
+    <form role="form" method="post" class="form-group"  th:object="${AddUser}" th:action="@{/admin/add}" >
+
+        <div class="form-group">
+            <label for="name"> Name </label>
+            <input class="form-control" id="name" type="text" placeholder="name" th:field="${AddUser.name}"/>
+        </div>
+        <div class="form-group">
+            <label for="login"> Login </label>
+            <input class="form-control" id="login" type="text" placeholder="login" th:field="${AddUser.login}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="password"> Password </label>
+            <input class="form-control" id="password" type="text" placeholder="password" th:field="${AddUser.password}"/>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add new user</button>
+    </form>
+</div>
+
+
+</body>
+</html>
